@@ -15,5 +15,7 @@ def select_gpu(results, thres=4096):
             if int(re.findall('(.*), (.*?) MiB', line)[0][-1]) > thres:
                 avali.append(i)
         return avali
-    except:
-        return ''
+    except Exception as e:
+        print(f"GPU选择过程中出现错误: {e}")
+        print("将返回空列表，使用默认GPU配置")
+        return []
